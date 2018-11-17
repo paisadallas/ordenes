@@ -1,5 +1,7 @@
 package co.appeasy.www.ordenes;
 
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,30 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        //BASE DE DATOS
+        BdOrdenes misOrdenes= new BdOrdenes(this,"BdOrdenes",null,1);
+        SQLiteDatabase db= misOrdenes.getWritableDatabase();
+
+        //INGRESAMOS DATOS A LA BASE
+
+
+        if(db != null)
+        {
+
+            for(int i=1;i<=10;i++){
+                int codigo=i;
+
+                String numeroOrden= "Orden No " + i;
+                db.execSQL("INSERT INTO ordenes (codigo, nombre)"+
+                        "VALUES ("+ codigo +",'"+numeroOrden+"'  )");
+            }
+
+            //CIERRO BASE DATOS
+            db.close();
+        }
+
+        String pathDatabase = getDatabasePath("BdOrdenes.db").getAbsolutePath();
     }
 
     @Override
@@ -55,4 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }
