@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">ordenes</string>
     <string name="action_settings">Settings</string>
-    <string name="btn_actualizar">Actualizar</string>
-    <string name="add_orden">Añadir</string>
+    <string name="add_orden">Agregar</string>
+
+
+    <string name="btn_update">Actualizar</string>
+    <string name="bt_add">Agregar</string>
+    <string name="bt_delete">Borrar</string>
+    <string name="bt_consult">Conslutar</string>
+
+
 </resources>

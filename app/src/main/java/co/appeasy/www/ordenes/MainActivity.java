@@ -10,8 +10,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    Button btUpdate;
+    Button btDelete;
+    Button btAdd;
+    Button btConsult;
+    TextView tviewOrden;
+    SQLiteDatabase sqData;
+
 
 
 
@@ -19,17 +31,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //INICIO EL TOOLBAR
+     //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+      //  setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        //Enlazamos Botones
+
+        btUpdate= (Button)findViewById(R.id.btUpdate);
+        btDelete= (Button)findViewById(R.id.btDelete);
+        btAdd= (Button)findViewById(R.id.btAdd);
+        btConsult= (Button)findViewById(R.id.btConsult);
+
+      //  funcion();
+
+        //Escuchamos
+
+        btDelete.setOnClickListener((View.OnClickListener) this);
+        btDelete.setOnClickListener((View.OnClickListener) this);
+        btAdd.setOnClickListener((View.OnClickListener) this);
+        btConsult.setOnClickListener((View.OnClickListener) this);
 
         //BASE DE DATOS
         BdOrdenes misOrdenes= new BdOrdenes(this,"BdOrdenes",null,1);
@@ -85,5 +105,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
 
+        switch (v.getId()){
+
+            case R.id.btAdd:
+
+                Toast toast2 = Toast.makeText(getApplicationContext(),"Toast con gravity", Toast.LENGTH_SHORT);
+                toast2.show();
+                break;
+
+            case R.id.btDelete:
+                break;
+
+            case R.id.btUpdate:
+                break;
+
+            case R.id.btConsult:
+                break;
+        }
+    }
 }
